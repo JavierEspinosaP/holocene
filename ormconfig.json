@@ -5,7 +5,7 @@
   "username": "admin",
   "password": "secret",
   "database": "holocene",
-  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "entities": ["src/**/*.entity{.ts,.js}"],
   "synchronize": true,
   "migrations": ["dist/migrations/*{.ts,.js}"],
   "cli": {
