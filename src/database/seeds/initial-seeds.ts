@@ -9,8 +9,11 @@ import { Research } from '../../modules/research/entities/research.entity';
 import { ResearchTypes } from '../../modules/research/seeds/research-types.seed';
 import { ResourceType } from '../../modules/resources/entities/resource-type.entity';
 import { ResourceTypes } from '../../modules/resources/seeds/resource-types.seed';
+import { PlanetType } from '../../modules/planets/entities/planet-type.entity';
+import { PlanetTypes } from '../../modules/planets/seeds/planet-types.seed';
 
 export async function seedDatabase(dataSource: DataSource) {
+  const planetTypeRepo = dataSource.getRepository(PlanetType);
   const defenseTypeRepo = dataSource.getRepository(DefenseType);
   const shipTypeRepo = dataSource.getRepository(ShipType);
   const buildingTypeRepo = dataSource.getRepository(BuildingType);
@@ -31,6 +34,9 @@ export async function seedDatabase(dataSource: DataSource) {
 
   // Insert resource types
   await resourceTypeRepo.save(ResourceTypes);
+
+  // Insert planet types
+  await planetTypeRepo.save(PlanetTypes);
 
   console.log('Database seeded successfully!');
 }

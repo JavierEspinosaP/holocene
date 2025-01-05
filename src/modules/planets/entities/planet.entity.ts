@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Building } from '../../buildings/entities/building.entity';
+import { PlanetType } from './planet-type.entity';
 import { Resource } from '../../resources/entities/resource.entity';
 import { Moon } from './moon.entity';
 import { SolarSystem } from './solar-system.entity';
@@ -21,12 +22,6 @@ export class Planet {
   @ManyToOne(() => SolarSystem, system => system.planets)
   system: SolarSystem;
 
-  @Column()
-  size: number;
-
-  @Column()
-  temperature: number;
-
   @Column({ default: 0 })
   population: number;
 
@@ -35,6 +30,9 @@ export class Planet {
 
   @Column({ default: 0 })
   availableArea: number;
+
+  @ManyToOne(() => PlanetType, type => type.planets)
+  type: PlanetType;
 
   @ManyToOne(() => User, user => user.planets)
   owner: User;
